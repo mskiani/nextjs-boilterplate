@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import ResponsiveAppBar from "components/Menu";
+import { NavBar } from "./NavBar";
 
 type Props = {
   children?: ReactNode;
@@ -20,7 +20,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => (
       />
     </Head>
     <header>
-      <ResponsiveAppBar />
+      <NavBar />
     </header>
     {children}
     <footer>

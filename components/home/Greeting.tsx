@@ -4,7 +4,12 @@ interface Props {
 }
 
 function Greeting({ message }: Props) {
-  return <MainMessage>{message}</MainMessage>;
+  return (
+    <MainMessage>
+      {message}
+      <img src={"lol.png"} width="30px" height="30px" />
+    </MainMessage>
+  );
 }
 
 const MainMessage = styled.p`
