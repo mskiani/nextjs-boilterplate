@@ -20,23 +20,18 @@ export const Footer = () => {
     },
   ];
   return (
-    <Box
+    <Grid
       sx={{
-        backgroundColor: "pink",
-        height: "500px",
         position: "fixed",
-        width: "80%",
+        width: "100%",
         bottom: "0px",
+        backgroundSize: "cover",
+        height: "600px",
+
+        backgroundImage:
+          " linear-gradient(to left, rgba(42, 219, 167, 0.8), rgba(10, 138, 151, .9)),url('images/loj.png')",
       }}
-    >
-      <Grid
-        sx={{
-          height: "300px",
-          backgroundImage:
-            " linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),url('images/lol2.png')",
-        }}
-      ></Grid>
-    </Box>
+    ></Grid>
   );
 };
 
