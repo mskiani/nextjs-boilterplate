@@ -42,8 +42,13 @@ export const NavBar = () => {
           gap: "68px",
         }}
       >
-        {Menu.map((item) => (
-          <Typography color="white" fontWeight="700" fontSize="14px">
+        {Menu.map((item, index) => (
+          <Typography
+            key={index}
+            color="white"
+            fontWeight="700"
+            fontSize="14px"
+          >
             {item.title}
           </Typography>
         ))}
