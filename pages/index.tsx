@@ -39,9 +39,7 @@ const IndexPage = () => (
       >
         <ProgressSteps />
       </Box>
-      <Box>
-        <Form />
-      </Box>
+      <Form />
     </MainConainer>
   </Layout>
 );

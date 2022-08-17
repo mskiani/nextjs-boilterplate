@@ -1,14 +1,21 @@
-import Link from "next/link";
-import Layout from "components/common/Layout";
-import Greeting from "components/home/Greeting";
 import { Typography } from "@mui/material";
 import styled from "styled-components";
 import { Grid, Box, LinearProgress } from "@mui/material";
-import ProgressBar from "components/common/ProgressBar";
-import ProgressSteps from "components/common/ProgressSteps";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
 
+const Label = ({ title }: { title: string }) => (
+  <Typography color="#0a8a97" fontSize="27px" fontWeight="600px">
+    {title}
+  </Typography>
+);
 const Form = () => (
   <Box
+    display="flex"
+    flexDirection="column"
     sx={{
       background: "rgba(88, 219, 186, 0.1)",
       padding: {
@@ -16,14 +23,49 @@ const Form = () => (
       },
     }}
   >
-    hrllo
+    <FormControl
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+      }}
+    >
+      <Label title="Certification" />
+      <RadioButtons
+        aria-labelledby="demo-radio-buttons-group-label"
+        defaultValue="Yes"
+        name="radio-buttons-group"
+        row
+      >
+        <FormControlLabel
+          sx={{ backgroundColor: "" }}
+          value="Yes"
+          control={<CustomRadio />}
+          label="Yes"
+        />
+        <FormControlLabel
+          value="Pending"
+          control={<CustomRadio />}
+          label="Pending"
+        />
+        <FormControlLabel value="No" control={<CustomRadio />} label="No" />
+      </RadioButtons>
+    </FormControl>
   </Box>
 );
 
-const MainConainer = styled(Grid)({
+const CustomRadio = styled(Radio)({
+  color: "#d4d4d4",
+  "&.Mui-checked": {
+    color: "#2adba7",
+  },
+});
+
+const RadioButtons = styled(RadioGroup)({
   display: "flex",
-  flexDirection: "column",
-  overFlow: "hidden",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  gap: "128px",
 });
 
 export default Form;
