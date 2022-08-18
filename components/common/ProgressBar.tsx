@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/styles";
 import { lighten, Box, LinearProgress, Typography } from "@mui/material";
 
 interface Props {
-  color?: "primary" | "secondary" | string;
+  color?: "primary" | "secondary";
   hex?: string;
   value?: number;
 }
@@ -65,7 +65,7 @@ const ProgressBar = ({ color, hex, value }: Props) => {
   return (
     <Box position="relative" display="inline-flex" style={{ width: "100%" }}>
       <BorderLinearProgress
-        color={hex ? undefined : color}
+        color="primary"
         variant="determinate"
         value={value}
       />
