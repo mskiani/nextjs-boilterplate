@@ -28,16 +28,8 @@ const IndexPage = () => {
 
   const [submit, setSubmit] = React.useState(false);
   const [progrssValue, setProgressValue] = React.useState(70);
-  const [login, setLogin] = React.useState(false);
+  const [login, setLogin] = React.useState(true);
 
-  if (
-    typeof window.ethereum !== "undefined" ||
-    typeof window.web3 !== "undefined"
-  ) {
-    console.log("MetaMask is installed!");
-  } else {
-    console.log("MetaMask is not  installed!");
-  }
   const handleForm = () => {
     // const isNullish = Object.values(formData).every((value) => {
     //   if (value === null) {

@@ -4,6 +4,28 @@ import LanguageIcon from "@mui/icons-material/Language";
 import Link from "next/link";
 import React from "react";
 export const NavBar = () => {
+  const [metamaskStatus, setMetamaskStatus] = React.useState(false);
+
+  React.useEffect(() => {
+    // Client-side-only code
+    //checking on user browser whther metamask is installed or not???
+
+    window.addEventListener("load", function () {
+      if (typeof web3 !== "undefined") {
+        console.log("web3 is enabled");
+        if (web3.currentProvider.isMetaMask === true) {
+          setMetamaskStatus(true);
+          console.log("MetaMask is active");
+        } else {
+          console.log("MetaMask is not available");
+          setMetamaskStatus(false);
+        }
+      } else {
+        console.log("web3 is not found");
+      }
+    });
+  });
+
   const Menu = [
     {
       title: "Home",
@@ -20,6 +42,7 @@ export const NavBar = () => {
   ];
   return (
     <Grid
+      id="top"
       container
       sx={{
         backgroundColor: "red",
@@ -59,7 +82,7 @@ export const NavBar = () => {
           variant="contained"
           sx={{ backgroundColor: "white", padding: "0px", margin: "0px" }}
         >
-          <GradientText>Login</GradientText>
+          <GradientText>{metamaskStatus ? "Logout" : "Login"}</GradientText>
         </Button>
       </Grid>
       <Grid
@@ -108,7 +131,7 @@ export const NavBar = () => {
           variant="contained"
           sx={{ backgroundColor: "white", padding: "0px", margin: "0px" }}
         >
-          <GradientText>Login</GradientText>
+          <GradientText>{metamaskStatus ? "Logout" : "Login"}</GradientText>
         </Button>
       </Grid>
     </Grid>
