@@ -1,13 +1,13 @@
 import { Button, Grid, Typography } from "@mui/material";
 import styled from "styled-components";
 import LanguageIcon from "@mui/icons-material/Language";
-
+import Link from "next/link";
 import React from "react";
 export const NavBar = () => {
   const Menu = [
     {
       title: "Home",
-      link: "/index",
+      link: "/",
     },
     {
       title: "Marketplace",
@@ -25,13 +25,42 @@ export const NavBar = () => {
         backgroundColor: "red",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "20px 62px",
+
+        padding: {
+          md: "20px 62px",
+          xs: "20px 20px",
+        },
         background:
           "linear-gradient(269.27deg, #2ADBA7 13.15%, #0A8A97 95.52%)",
       }}
     >
       <Grid item>
-        <img src="images/logo2.png" />
+        <Link href="/">
+          <img src="images/logo2.png" />
+        </Link>
+      </Grid>
+
+      <Grid
+        item
+        sx={{
+          flexDirection: "row",
+          display: {
+            md: "none",
+            xs: "flex",
+          },
+          alignItems: "center",
+        }}
+      >
+        <LanguageIcon sx={{ color: "white" }} />
+        <Typography color="white" sx={{ margin: "0px 20px 0px 15px" }}>
+          EN
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "white", padding: "0px", margin: "0px" }}
+        >
+          <GradientText>Login</GradientText>
+        </Button>
       </Grid>
       <Grid
         item
@@ -40,22 +69,36 @@ export const NavBar = () => {
           display: "flex",
           justifyContent: "space-around",
           gap: "68px",
+          marginTop: {
+            xs: "30px",
+            md: "0px",
+          },
         }}
       >
         {Menu.map((item, index) => (
-          <Typography
-            key={index}
-            color="white"
-            fontWeight="700"
-            fontSize="14px"
-          >
-            {item.title}
-          </Typography>
+          <Link href={item.link}>
+            <Typography
+              key={index}
+              color="white"
+              fontWeight="700"
+              fontSize="14px"
+            >
+              {item.title}
+            </Typography>
+          </Link>
         ))}
       </Grid>
+
       <Grid
         item
-        sx={{ flexDirection: "row", display: "flex", alignItems: "center" }}
+        sx={{
+          flexDirection: "row",
+          alignItems: "center",
+          display: {
+            md: "flex",
+            xs: "none",
+          },
+        }}
       >
         <LanguageIcon sx={{ color: "white" }} />
         <Typography color="white" sx={{ margin: "0px 20px 0px 15px" }}>

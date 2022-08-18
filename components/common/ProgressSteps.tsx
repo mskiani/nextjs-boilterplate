@@ -3,9 +3,17 @@ import { Typography } from "@mui/material";
 import styled from "styled-components";
 import { Grid, Box } from "@mui/material";
 
-const SingleStep = ({ title, icon }: { title: string; icon: string }) => (
+const SingleStep = ({
+  title,
+  icon,
+  active,
+}: {
+  title: string;
+  icon: string;
+  active: boolean;
+}) => (
   <Box
-    bgcolor={"#58dbba"}
+    bgcolor={active ? "#0a8a97" : "#58dbba"}
     flexDirection="row"
     display="flex"
     justifyContent="center"
@@ -57,7 +65,7 @@ const ProgressSteps = () => (
     <SingleStep title="Project Data" icon="icons/barsIcon.png" />
     <SingleStep title="Further Information" icon="icons/iconInfo.png" />{" "}
     <SingleStep title="Project Impact" icon="icons/iconWheel.png" />{" "}
-    <SingleStep title="Certification" icon="icons/iconDone.svg" />
+    <SingleStep title="Certification" icon="icons/iconDone.svg" active={true} />
   </Box>
 );
 

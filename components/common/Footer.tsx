@@ -1,6 +1,7 @@
 import { Button, Grid, Typography, Box } from "@mui/material";
 import styled from "styled-components";
 import React from "react";
+import Link from "next/link";
 export const Footer = () => {
   const Menu = [
     {
@@ -40,36 +41,93 @@ export const Footer = () => {
         backgroundSize: "cover",
         height: "600px",
 
-        padding: "200px 200px",
+        padding: {
+          md: "200px 200px",
+          xs: "50px 20px",
+        },
 
         backgroundImage:
           " linear-gradient(to left, rgba(42, 219, 167, 0.8), rgba(10, 138, 151, .9)),url('images/loj.png')",
       }}
     >
-      <Grid md={3} xs={12} item>
+      <Grid
+        md={3}
+        xs={12}
+        item
+        sx={{
+          display: "flex",
+          justifyContent: {
+            md: "flex-start",
+            xs: "center",
+          },
+        }}
+      >
         {" "}
-        <img src="images/logo2.png" />
+        <img
+          src="images/logo2.png"
+          style={{ width: "193px", height: "45px" }}
+        />
       </Grid>
       <Grid
         md={3}
-        sx={{ gap: "29px", display: "flex", flexDirection: "column" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+
+          gap: {
+            md: "29px",
+            xs: "10px",
+          },
+        }}
         xs={12}
         item
       >
         <Typography
-          fontSize="24px"
           fontWeight="500"
-          lineHeight="36px"
           color="white"
+          sx={{
+            textAlign: {
+              xs: "center",
+              md: "left",
+            },
+            lineHeight: {
+              md: "36px",
+              xs: "30px",
+            },
+            fontSize: {
+              xs: "24px",
+              md: "24px",
+            },
+          }}
         >
           Strassburger Strasse 55 <br />
           10405 Berlin <br />
           Germany
         </Typography>
-        <Typography color="white" fontSize="14px" fontWeight="600px">
+        <Typography
+          color="white"
+          fontSize="14px"
+          fontWeight="600px"
+          sx={{
+            textAlign: {
+              xs: "center",
+              md: "left",
+            },
+          }}
+        >
           (434) 546-4356
         </Typography>
-        <Typography color="white" fontSize="14px" fontWeight="600px">
+        <Typography
+          color="white"
+          fontSize="14px"
+          fontWeight="600px"
+          sx={{
+            textAlign: {
+              xs: "center",
+              md: "left",
+            },
+          }}
+        >
           infor@greentrade.com
         </Typography>
       </Grid>
@@ -118,7 +176,9 @@ export const Footer = () => {
         }}
       >
         {" "}
-        <Logo src="images/iconUp.png" />
+        <Link href="#top">
+          <Logo src="images/iconUp.png" />
+        </Link>
       </Grid>
     </Grid>
   );

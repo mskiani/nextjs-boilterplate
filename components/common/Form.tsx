@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import styled from "styled-components";
 import { Grid, Box, Button } from "@mui/material";
+import { device } from "./Breakpoint";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -10,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
 import BasicDatePicker from "./BasicDatePicker";
-function Form() {
+function Form({ formData }) {
   const [CertificationDate, setCertificateDate] = React.useState("");
   const [data, setData] = React.useState({
     CertificationStatus: "",
@@ -25,10 +26,17 @@ function Form() {
 
   const handleData = (e) => {
     const { name, value } = e.target;
-    console.log("hello g  ", "name: ", name, "value : ", value);
-    console.log("date is ", CertificationDate);
-    setData((prev) => ({ ...prev, [name]: value }));
+
+    setData({
+      ...data,
+      [name]: e.target.value,
+      CertificationDate: CertificationDate,
+    });
+
+    console.log(name, value, "date is ", data);
   };
+
+  formData(data);
 
   return (
     <Box
@@ -39,7 +47,7 @@ function Form() {
         background: "rgba(88, 219, 186, 0.1)",
         padding: {
           md: "98px 73px",
-          xs: "0px 20px",
+          xs: "0px  20px 20px 20px",
         },
       }}
     >
@@ -81,10 +89,10 @@ function Form() {
           },
         }}
       >
-        <Grid md={6} item>
+        <Grid md={6} xs={12} item>
           <Label>Certification</Label>
         </Grid>
-        <Grid md={6} item>
+        <Grid md={6} item xs={12}>
           <FormControl fullWidth>
             <Select
               labelId="demo-customized-select-label"
@@ -92,7 +100,7 @@ function Form() {
               value={data.Certification}
               onChange={handleData}
               input={<BootstrapInput />}
-              sx={{ backgroundColor: "white" }}
+              sx={{ backgroundColor: "white", color: "black" }}
               placeholder="Select a Certification"
             >
               <CustomMenu value={"Certified Emission Reduction (CER)"} selected>
@@ -115,10 +123,10 @@ function Form() {
           },
         }}
       >
-        <Grid md={6} item>
+        <Grid md={6} xs={12} item>
           <Label>Certificate Issued date</Label>
         </Grid>
-        <Grid md={6} item>
+        <Grid md={6} item xs={12}>
           <BasicDatePicker
             date={CertificationDate}
             setDate={setCertificateDate}
@@ -134,10 +142,10 @@ function Form() {
           },
         }}
       >
-        <Grid md={6} item>
+        <Grid md={6} xs={12} item>
           <Label>Token Issuer</Label>
         </Grid>
-        <Grid md={6} item>
+        <Grid md={6} xs={12} item>
           <FormControl fullWidth>
             <Select
               labelId="demo-customized-select-label"
@@ -188,10 +196,19 @@ function Form() {
 
       <Hr />
       <Container container>
-        <Grid md={6} item>
+        <Grid md={6} item xs={12}>
           <Label> Measurement</Label>
         </Grid>
-        <Grid md={6} item>
+        <Grid
+          md={6}
+          item
+          xs={12}
+          sx={{
+            paddingRight: {
+              xs: "20px",
+            },
+          }}
+        >
           <LabelMedium>IoT Sensor</LabelMedium>
           <CustomTextField
             placeholder="Data XY"
@@ -250,15 +267,24 @@ const RadioButtons = styled(RadioGroup)({
   flexDirection: "row",
   justifyContent: "space-between",
   gap: "128px",
+  ["@media (max-width:565px)"]: {
+    gap: "20px",
+  },
 });
 const Container = styled(Grid)({
   paddingTop: "42px",
+  ["@media (max-width:565px)"]: {
+    paddingTop: "20px",
+  },
 });
 const RadioButtons2 = styled(RadioGroup)({
   display: "flex",
   flexDirection: "row",
   justifyContent: "flex-start",
   gap: "128px",
+  ["@media (max-width:565px)"]: {
+    gap: "20px",
+  },
 });
 const CustomMenu = styled(MenuItem)({
   selected: {
@@ -285,11 +311,19 @@ const CustomTextField = styled.input`
   }
 `;
 
-const Label = styled(Typography)({
-  color: "#0a8a97",
-  fontSize: "27px",
-  fontWeight: "600",
-});
+const Label = styled.p`
+  color: #0a8a97;
+  font-size: 27px;
+  font-weight: 600;
+  font-family: Roboto;
+  @media ${device.mobileL} {
+    color: #0a8a97;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Roboto;
+  }
+`;
+
 const LabelMedium = styled(Typography)({
   color: "#344054",
   fontSize: "18px",
