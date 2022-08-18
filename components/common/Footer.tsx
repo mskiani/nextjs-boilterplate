@@ -38,10 +38,10 @@ export const Footer = () => {
         width: "100%",
         bottom: "0px",
         backgroundSize: "cover",
-        height: "400px",
-        padding: {
-          md: "177px 106px",
-        },
+        height: "600px",
+
+        padding: "200px 200px",
+
         backgroundImage:
           " linear-gradient(to left, rgba(42, 219, 167, 0.8), rgba(10, 138, 151, .9)),url('images/loj.png')",
       }}

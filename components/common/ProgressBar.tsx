@@ -47,10 +47,10 @@ const ProgressBar = ({ color, hex, value }: Props) => {
 
       width: "100%",
       backgroundColor: hex ? lighten(internalColor, 0.5) : undefined,
-      borderRadius: "1px",
+      borderRadius: "4px",
     },
     bar: {
-      borderRadius: 2,
+      borderRadius: "4px",
       backgroundColor: hex ? internalColor : undefined,
     },
   })(LinearProgress);

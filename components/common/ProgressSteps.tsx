@@ -12,13 +12,28 @@ const SingleStep = ({ title, icon }: { title: string; icon: string }) => (
     padding="16px 27px"
     borderRadius="5px"
     gap="13px"
+    sx={{
+      padding: {
+        md: "16px 27px",
+        xs: "10px 20px",
+      },
+      width: {
+        xs: "100%",
+        md: "auto",
+      },
+    }}
   >
     <Icon src={icon} />{" "}
     <Typography
       color="white"
-      fontSize="26px"
       fontWeight="600px"
       lineHeight="32px"
+      sx={{
+        fontSize: {
+          md: "26px",
+          xs: "20px",
+        },
+      }}
     >
       {title}
     </Typography>
@@ -31,6 +46,13 @@ const ProgressSteps = () => (
     flexDirection="row"
     justifyContent="space-between"
     gap="15px"
+    flexWrap="wrap"
+    sx={{
+      justifyContent: {
+        xs: "center",
+        md: "space-between",
+      },
+    }}
   >
     <SingleStep title="Project Data" icon="icons/barsIcon.png" />
     <SingleStep title="Further Information" icon="icons/iconInfo.png" />{" "}

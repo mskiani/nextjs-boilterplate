@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import styled from "styled-components";
-import { Grid, Box, LinearProgress } from "@mui/material";
+import { Grid, Box, Button } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -10,13 +10,24 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
 import BasicDatePicker from "./BasicDatePicker";
-import TextField from "@mui/material/TextField";
-
 function Form() {
-  const [age, setAge] = React.useState("");
+  const [CertificationDate, setCertificateDate] = React.useState("");
+  const [data, setData] = React.useState({
+    CertificationStatus: "",
+    Certification: "",
+    CertificationDate: "",
+    TokenIssuer: "",
+    Classification: "",
+    IOTSensor: "",
+    GeoSattelite: "",
+    DroneFootage: "",
+  });
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+  const handleData = (e) => {
+    const { name, value } = e.target;
+    console.log("hello g  ", "name: ", name, "value : ", value);
+    console.log("date is ", CertificationDate);
+    setData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -28,6 +39,7 @@ function Form() {
         background: "rgba(88, 219, 186, 0.1)",
         padding: {
           md: "98px 73px",
+          xs: "0px 20px",
         },
       }}
     >
@@ -39,8 +51,10 @@ function Form() {
           <RadioButtons
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="Yes"
-            name="radio-buttons-group"
             row
+            name="CertificationStatus"
+            value={data.CertificationStatus}
+            onChange={handleData}
           >
             <FormControlLabel
               sx={{ backgroundColor: "" }}
@@ -74,9 +88,9 @@ function Form() {
           <FormControl fullWidth>
             <Select
               labelId="demo-customized-select-label"
-              id="demo-customized-select"
-              value={age}
-              onChange={handleChange}
+              name="Certification"
+              value={data.Certification}
+              onChange={handleData}
               input={<BootstrapInput />}
               sx={{ backgroundColor: "white" }}
               placeholder="Select a Certification"
@@ -105,7 +119,10 @@ function Form() {
           <Label>Certificate Issued date</Label>
         </Grid>
         <Grid md={6} item>
-          <BasicDatePicker />
+          <BasicDatePicker
+            date={CertificationDate}
+            setDate={setCertificateDate}
+          />
         </Grid>
       </Container>
       <Hr />
@@ -124,9 +141,9 @@ function Form() {
           <FormControl fullWidth>
             <Select
               labelId="demo-customized-select-label"
-              id="demo-customized-select"
-              value={age}
-              onChange={handleChange}
+              name="TokenIssuer"
+              value={data.TokenIssuer}
+              onChange={handleData}
               input={<BootstrapInput />}
               placeholder="Select a Token Issuer"
               sx={{ backgroundColor: "white" }}
@@ -149,8 +166,10 @@ function Form() {
           <RadioButtons2
             aria-labelledby="demo-radio-buttons-group-label"
             defaultValue="Yes"
-            name="radio-buttons-group"
+            name="Classification"
             row
+            value={data.Classification}
+            onChange={handleData}
           >
             <FormControlLabel
               sx={{ backgroundColor: "" }}
@@ -174,18 +193,27 @@ function Form() {
         </Grid>
         <Grid md={6} item>
           <LabelMedium>IoT Sensor</LabelMedium>
-          <CustomTextField id="outlined-basic" placeholder="Data XY" />{" "}
+          <CustomTextField
+            placeholder="Data XY"
+            name="IOTSensor"
+            value={data.IOTSensor}
+            onChange={handleData}
+          />
           <LabelMedium>Geosatellite</LabelMedium>
           <CustomTextField
-            id="outlined-basic"
             variant="outlined"
             placeholder="Location XY..."
+            name="GeoSattelite"
+            value={data.GeoSattelite}
+            onChange={handleData}
           />
           <LabelMedium>Drone Footage</LabelMedium>
           <CustomTextField
-            id="outlined-basic"
             variant="outlined"
             placeholder="Data XY"
+            name="DroneFootage"
+            value={data.DroneFootage}
+            onChange={handleData}
           />
         </Grid>
       </Container>
@@ -269,4 +297,5 @@ const LabelMedium = styled(Typography)({
   marginBottom: "6px",
   marginTop: "33px",
 });
+
 export default Form;

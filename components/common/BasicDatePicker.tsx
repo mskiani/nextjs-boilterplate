@@ -3,11 +3,14 @@ import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import InputBase from "@mui/material/InputBase";
 import styled from "styled-components";
-export default function BasicDatePicker() {
-  const [value, setValue] = React.useState<Date | null>(null);
-
+export default function BasicDatePicker({
+  date,
+  setDate,
+}: {
+  date: any;
+  setDate: any;
+}) {
   const BootstrapInput = styled(TextField)(({ theme }) => ({
     "label + &": {
       marginTop: "3px",
@@ -35,11 +38,11 @@ export default function BasicDatePicker() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DatePicker
-        value={value}
-        onChange={(newValue) => {
-          setValue(newValue);
-        }}
-        renderInput={(params) => <BootstrapInput outline="none" {...params} />}
+        value={date}
+        onChange={setDate}
+        renderInput={(params) => (
+          <BootstrapInput id="CertificationDate" outline="none" {...params} />
+        )}
       />
     </LocalizationProvider>
   );
