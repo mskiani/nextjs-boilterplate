@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 import { NavBar } from "./NavBar";
-import { Footer } from "./Footer";
-import { Grid, Box } from "@mui/material";
+import Footer from "./Footer";
+import { Grid } from "@mui/material";
 
 type Props = {
   children?: ReactNode;

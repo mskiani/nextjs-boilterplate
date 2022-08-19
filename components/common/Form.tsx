@@ -1,14 +1,14 @@
 import { Typography } from "@mui/material";
 import styled from "styled-components";
-import { Grid, Box, Button } from "@mui/material";
-import { device } from "./Breakpoint";
+import { Grid, Box } from "@mui/material";
+import { device } from "utils/Breakpoint";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import * as React from "react";
 import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
 import BasicDatePicker from "./BasicDatePicker";
 function Form({ formData }) {
@@ -32,11 +32,9 @@ function Form({ formData }) {
       [name]: e.target.value,
       CertificationDate: CertificationDate,
     });
-
+    formData(data);
     console.log(name, value, "date is ", data);
   };
-
-  formData(data);
 
   return (
     <Box

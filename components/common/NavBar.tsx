@@ -9,11 +9,11 @@ export const NavBar = () => {
   React.useEffect(() => {
     // Client-side-only code
     //checking on user browser whther metamask is installed or not???
-
+    var web3: any;
     window.addEventListener("load", function () {
       if (typeof web3 !== "undefined") {
         console.log("web3 is enabled");
-        if (web3.currentProvider.isMetaMask === true) {
+        if (web3?.currentProvider?.isMetaMask === true) {
           setMetamaskStatus(true);
           console.log("MetaMask is active");
         } else {
@@ -99,7 +99,7 @@ export const NavBar = () => {
         }}
       >
         {Menu.map((item, index) => (
-          <Link href={item.link}>
+          <Link key={item.title} href={item.link}>
             <Typography
               key={index}
               color="white"

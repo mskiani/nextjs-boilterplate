@@ -62,9 +62,17 @@ const ProgressSteps = () => (
       },
     }}
   >
-    <SingleStep title="Project Data" icon="icons/barsIcon.png" />
-    <SingleStep title="Further Information" icon="icons/iconInfo.png" />{" "}
-    <SingleStep title="Project Impact" icon="icons/iconWheel.png" />{" "}
+    <SingleStep title="Project Data" icon="icons/barsIcon.png" active={false} />
+    <SingleStep
+      title="Further Information"
+      icon="icons/iconInfo.png"
+      active={false}
+    />{" "}
+    <SingleStep
+      title="Project Impact"
+      icon="icons/iconWheel.png"
+      active={false}
+    />{" "}
     <SingleStep title="Certification" icon="icons/iconDone.svg" active={true} />
   </Box>
 );

@@ -2,22 +2,7 @@ import { Button, Grid, Typography, Box } from "@mui/material";
 import styled from "styled-components";
 import React from "react";
 import Link from "next/link";
-export const Footer = () => {
-  const Menu = [
-    {
-      title: "Home",
-      link: "/index",
-    },
-    {
-      title: "Marketplace",
-      link: "#",
-    },
-    {
-      title: "Launchpad",
-      link: "#",
-    },
-  ];
-
+export default function Footer() {
   const footerMenu = [
     { title: "About", link: "#" },
     { title: "Growers", link: "#" },
@@ -182,7 +167,7 @@ export const Footer = () => {
       </Grid>
     </Grid>
   );
-};
+}
 
 const GradientText = styled.p`
   font-size: 16px;
