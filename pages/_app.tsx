@@ -1,4 +1,4 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -6,13 +6,24 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-`
+  .progress-bar {
+    background-color:#22d6ac;
+    
+  }
+  .progress {
+    height:40px;
+  }
+  .MuiInputBase-colorPrimary {
+    border-color:pink;
+  }
+ 
+`;
 
 const theme = {
   colors: {
-    primary: '#0070f3',
+    primary: "#pink",
   },
-}
+};
 
 function App({ Component, pageProps }) {
   return (
@@ -22,7 +33,7 @@ function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

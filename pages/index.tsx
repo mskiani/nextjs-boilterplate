@@ -1,8 +1,8 @@
 import Layout from "components/common/Layout";
 import { Typography } from "@mui/material";
 import styled from "styled-components";
-import { Grid, Box } from "@mui/material";
-import ProgressBar from "components/common/ProgressBar";
+import { Grid, Box, Button } from "@mui/material";
+import ProgressBarNew from "components/common/ProgressBar";
 import ProgressSteps from "components/common/ProgressSteps";
 import Form from "components/common/Form";
 import React from "react";
@@ -14,8 +14,7 @@ const MainConainer = styled(Grid)({
   overFlow: "hidden",
 });
 
-function IndexPage() {
-  //form data
+const IndexPage = () => {
   const [formData, setFormData] = React.useState({
     CertificationStatus: "",
     Certification: "",
@@ -27,12 +26,10 @@ function IndexPage() {
     DroneFootage: "",
   });
 
-  //form submit state to check submitted or not
   const [submit, setSubmit] = React.useState(false);
-  //state value of progress bar percentage
-  const [progrssValue, setProgressValue] = React.useState(70);
+  const [progressValue, setProgressValue] = React.useState(70);
+  const [login, setLogin] = React.useState(true);
 
-  //form handling function
   const handleForm = () => {
     // const isNullish = Object.values(formData).every((value) => {
     //   if (value === null) {
@@ -84,7 +81,6 @@ function IndexPage() {
             },
           }}
         >
-          {/* title */}
           Create Project NFT
         </Typography>
 
@@ -96,11 +92,8 @@ function IndexPage() {
             },
           }}
         >
-          {/* progrss bar component */}
-          <ProgressBar color="primary" value={progrssValue} hex="#22d6ac" />
+          <ProgressBarNew now={progressValue} />
         </Box>
-        {/* 
-        check if submit is false then show form else show submitted */}
         {!submit ? (
           <>
             {" "}
@@ -112,10 +105,8 @@ function IndexPage() {
                 },
               }}
             >
-              {/* progress buttons                */}
               <ProgressSteps />
             </Box>
-            {/* form component for handling form data */}
             <Form formData={setFormData} />
             <Box
               sx={{
@@ -155,7 +146,7 @@ function IndexPage() {
       </MainConainer>
     </Layout>
   );
-}
+};
 
 const GradientButton = styled.button`
   font-size: 16px;

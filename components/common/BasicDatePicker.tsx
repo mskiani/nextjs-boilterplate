@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 export default function BasicDatePicker({
   date,
   setDate,
@@ -40,9 +40,7 @@ export default function BasicDatePicker({
       <DatePicker
         value={date}
         onChange={setDate}
-        renderInput={(params) => (
-          <BootstrapInput id="CertificationDate" outline="none" {...params} />
-        )}
+        renderInput={(params) => <BootstrapInput {...params} />}
       />
     </LocalizationProvider>
   );

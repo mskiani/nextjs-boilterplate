@@ -45,7 +45,6 @@ export const NavBar = () => {
       id="top"
       container
       sx={{
-        backgroundColor: "red",
         justifyContent: "space-between",
         alignItems: "center",
 
